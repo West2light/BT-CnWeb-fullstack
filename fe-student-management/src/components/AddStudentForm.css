@@ -1,0 +1,45 @@
+.add-student-form-container {
+  max-width: 1200px;
+  margin: 0 auto 24px;
+}
+
+.add-student-collapse {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-student-panel .ant-collapse-header {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 24px !important;
+}
+
+.add-student-panel .ant-collapse-content-box {
+  padding: 24px !important;
+}
+
+.student-form-card {
+  box-shadow: none;
+  background: transparent;
+}
+
+.student-form-card .ant-card-body {
+  padding: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .add-student-form-container {
+    margin: 0 auto 16px;
+  }
+
+  .add-student-panel .ant-collapse-header {
+    padding: 12px 16px !important;
+  }
+
+  .add-student-panel .ant-collapse-content-box {
+    padding: 16px !important;
+  }
+}
+
