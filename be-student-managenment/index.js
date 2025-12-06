@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
+//BAI1
 // Khởi tạo ứng dụng Express
 const app = express();
 

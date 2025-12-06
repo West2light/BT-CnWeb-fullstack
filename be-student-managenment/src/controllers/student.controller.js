@@ -1,5 +1,5 @@
 const Student = require("../models/Student");
-//Get all students
+//BAI1: Get all students
 exports.getAllStudents = async (req, res) => {
   try {
     const students = await Student.find();
@@ -8,7 +8,7 @@ exports.getAllStudents = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-//POST create a new student
+//BAI2: POST create a new student
 exports.createStudent = async (req, res) => {
   try {
     console.log('createStudent - Request body:', req.body);
@@ -22,7 +22,7 @@ exports.createStudent = async (req, res) => {
   }
 };
 
-//PUT update a student
+//BAI3: PUT update a student
 exports.updateStudent = async (req, res) => {
   try {
     const { id } = req.params;
@@ -39,7 +39,7 @@ exports.updateStudent = async (req, res) => {
   }
 };
 
-//DELETE delete a student
+//BAI4: DELETE delete a student
 exports.deleteStudent = async (req, res) => {
   try {
     const { id } = req.params.id;

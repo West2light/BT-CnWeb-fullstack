@@ -4,7 +4,7 @@ import { EditOutlined, DeleteOutlined, SearchOutlined, SortAscendingOutlined, So
 import { studentAPI } from '../api/api';
 
 const { Search } = Input;
-
+//BAI1
 const StudentList = ({ students = [], loading = false, error = null, refetch, onEdit }) => {
   // State cho tìm kiếm
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,7 +13,7 @@ const StudentList = ({ students = [], loading = false, error = null, refetch, on
 
   // Sử dụng refetch từ prop (bắt buộc)
   const handleRefetch = refetch;
-
+  //BAI5: Search students by name
   // Lọc danh sách học sinh dựa trên từ khóa tìm kiếm (không phân biệt hoa thường)
   const filteredStudents = useMemo(() => {
     if (!searchTerm.trim()) {
@@ -23,20 +23,20 @@ const StudentList = ({ students = [], loading = false, error = null, refetch, on
       student.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [students, searchTerm]);
-
+  //BAI6: Sort students by name
   // Sắp xếp danh sách đã lọc theo tên (không phân biệt hoa thường)
   const sortedStudents = useMemo(() => {
     const sorted = [...filteredStudents].sort((a, b) => {
       const nameA = a.name.toLowerCase();
       const nameB = b.name.toLowerCase();
-      
+
       if (nameA < nameB) return sortAsc ? -1 : 1;
       if (nameA > nameB) return sortAsc ? 1 : -1;
       return 0;
     });
     return sorted;
   }, [filteredStudents, sortAsc]);
-
+  //BAI4: Delete a student
   // Hàm xử lý xóa học sinh
   const handleDelete = async (id) => {
     try {
@@ -49,7 +49,7 @@ const StudentList = ({ students = [], loading = false, error = null, refetch, on
       console.error('Error deleting student:', err);
     }
   };
-
+  //BAI3: Edit a student
   // Hàm xử lý sửa học sinh - gọi callback từ App
   const handleEdit = (record) => {
     if (onEdit) {
@@ -102,6 +102,7 @@ const StudentList = ({ students = [], loading = false, error = null, refetch, on
           >
             Sửa
           </Button>
+          {/* //BAI4: Delete a student */}
           <Popconfirm
             title="Xóa học sinh"
             description={`Bạn có chắc chắn muốn xóa học sinh "${record.name}"?`}
@@ -142,8 +143,8 @@ const StudentList = ({ students = [], loading = false, error = null, refetch, on
   // Hiển thị danh sách học sinh với Table của Ant Design
   return (
     <div className="student-list-container">
-      <Card 
-        title="Danh sách học sinh" 
+      <Card
+        title="Danh sách học sinh"
         className="student-list-card"
         extra={
           <Space size="middle">
@@ -176,8 +177,8 @@ const StudentList = ({ students = [], loading = false, error = null, refetch, on
           pagination={{
             pageSize: 10,
             showSizeChanger: true,
-            showTotal: (total, range) => 
-              searchTerm 
+            showTotal: (total, range) =>
+              searchTerm
                 ? `Hiển thị ${range[0]}-${range[1]} trong tổng ${total} kết quả tìm kiếm`
                 : `Tổng cộng ${total} học sinh`,
             pageSizeOptions: ['5', '10', '20', '50'],

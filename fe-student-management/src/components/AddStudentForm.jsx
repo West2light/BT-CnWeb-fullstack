@@ -1,3 +1,4 @@
+//BAI2
 import React, { useState, useEffect } from 'react';
 import { Form, Input, InputNumber, Button, message, Card, Collapse } from 'antd';
 import { PlusOutlined, MinusOutlined, EditOutlined } from '@ant-design/icons';
@@ -56,7 +57,7 @@ const AddStudentForm = ({ onSuccess, editingStudent, onCancelEdit }) => {
       form.resetFields();
       setIsOpen(false);
       setIsEditMode(false);
-      
+
       // Gọi callback để reset editingStudent trong App
       if (onCancelEdit) {
         onCancelEdit();
@@ -67,7 +68,7 @@ const AddStudentForm = ({ onSuccess, editingStudent, onCancelEdit }) => {
         onSuccess();
       }
     } catch (err) {
-      const errorMessage = err.response?.data?.error || err.message || 
+      const errorMessage = err.response?.data?.error || err.message ||
         (isEditMode ? 'Lỗi khi cập nhật học sinh' : 'Lỗi khi thêm học sinh');
       console.error("Lỗi:", err);
       message.error(errorMessage);
@@ -80,7 +81,7 @@ const AddStudentForm = ({ onSuccess, editingStudent, onCancelEdit }) => {
   const handleCollapseChange = (key) => {
     const willOpen = key.includes('1');
     setIsOpen(willOpen);
-    
+
     if (!willOpen) {
       // Khi đóng form, reset về chế độ thêm mới
       form.resetFields();
@@ -141,8 +142,8 @@ const AddStudentForm = ({ onSuccess, editingStudent, onCancelEdit }) => {
                   { whitespace: true, message: 'Họ tên không được để trống!' },
                 ]}
               >
-                <Input 
-                  placeholder="Nhập họ tên học sinh" 
+                <Input
+                  placeholder="Nhập họ tên học sinh"
                   size="large"
                 />
               </Form.Item>
@@ -156,8 +157,8 @@ const AddStudentForm = ({ onSuccess, editingStudent, onCancelEdit }) => {
                   { type: 'number', min: 1, max: 100, message: 'Tuổi phải từ 1 đến 100!' },
                 ]}
               >
-                <InputNumber 
-                  placeholder="Nhập tuổi" 
+                <InputNumber
+                  placeholder="Nhập tuổi"
                   min={1}
                   max={100}
                   style={{ width: '100%' }}
@@ -174,8 +175,8 @@ const AddStudentForm = ({ onSuccess, editingStudent, onCancelEdit }) => {
                   { whitespace: true, message: 'Lớp không được để trống!' },
                 ]}
               >
-                <Input 
-                  placeholder="Nhập lớp học" 
+                <Input
+                  placeholder="Nhập lớp học"
                   size="large"
                 />
               </Form.Item>
@@ -183,9 +184,9 @@ const AddStudentForm = ({ onSuccess, editingStudent, onCancelEdit }) => {
               {/* Nút submit và hủy */}
               <Form.Item>
                 <div style={{ display: 'flex', gap: '8px' }}>
-                  <Button 
-                    type="primary" 
-                    htmlType="submit" 
+                  <Button
+                    type="primary"
+                    htmlType="submit"
                     loading={loading}
                     size="large"
                     block
@@ -194,7 +195,7 @@ const AddStudentForm = ({ onSuccess, editingStudent, onCancelEdit }) => {
                     {loading ? loadingText : buttonText}
                   </Button>
                   {isEditMode && (
-                    <Button 
+                    <Button
                       size="large"
                       onClick={handleCancel}
                       disabled={loading}
